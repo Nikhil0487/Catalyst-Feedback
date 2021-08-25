@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Share Feedback</title>
+    <title>Share Feedback - Catalyst</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
     <link rel="icon" type="image/ico" href="favicon.ico" />
@@ -14,8 +14,9 @@
 </head>
 
 <body>
-    <h1 style="text-align:center">Share Feedback</h1>
-    <form id="basic-form" onSubmit="return false; " method="POST ">
+    <h2 style="text-align:center">Share Feedback</h2>
+    <input class="summary" type="summary" value="SUMMARY ">
+    <form id="basic-form" onSubmit="return false;" method="POST">
         <p>
             <label for="name">Name</label>
             <input id="name" name="name" placeholder="Your name ">
@@ -25,8 +26,15 @@
             <input id="email" name="email" placeholder="Your E-mail id ">
         </p>
         <p>
-            <label for="feature">Feature</label>
-            <input id="feature" name="feature" placeholder="Feature name ">
+            <label for="feature">What part of Catalyst is your feedback about?</label>
+            <select name="features" id="features">
+                <option value="Compute">Compute</option>
+                <option value="Orchestrate">Orchestrate</option>
+                <option value="Storage">Storage</option>
+                <option value="Intelligense">Intelligense</option>
+                <option value="Other servicese">Other services</option>
+            </select>
+            <!--<input id="feature" name="feature" placeholder="Feature name">-->
         </p>
         <p>
             <label for="idea">Idea</label>
@@ -34,10 +42,10 @@
         </p>
         <p>
             <label for="description">Description</label>
-            <input id="description" name="description" placeholder="Describe your idea ">
+            <textarea id="description" cols="50" rows="10" name=" description " placeholder="Please describe your detail in as much detail as possible  "></textarea>
         </p>
         <p>
-            <input class="submit" type="submit" value="SUBMIT">
+            <input class="submit" type="submit" value="SUBMIT ">
         </p>
     </form>
 </body>
