@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Share Feedback</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
+    <link rel="icon" type="image/ico" href="favicon.ico" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.0/jquery.validate.min.js"></script>
+    <script src="main.js"></script>
+</head>
+
+<body>
+    <h1 style="text-align:center">Share Feedback</h1>
+    <form id="basic-form" onSubmit="return false; " method="POST ">
+        <p>
+            <label for="name">Name</label>
+            <input id="name" name="name" placeholder="Your name ">
+        </p>
+        <p>
+            <label for="email">E-mail</label>
+            <input id="email" name="email" placeholder="Your E-mail id ">
+        </p>
+        <p>
+            <label for="feature">Feature</label>
+            <input id="feature" name="feature" placeholder="Feature name ">
+        </p>
+        <p>
+            <label for="idea">Idea</label>
+            <input id="idea" name="idea" placeholder="Your idea ">
+        </p>
+        <p>
+            <label for="description">Description</label>
+            <input id="description" name="description" placeholder="Describe your idea ">
+        </p>
+        <p>
+            <input class="submit" type="submit" value="SUBMIT">
+        </p>
+    </form>
+</body>
+
+</html>

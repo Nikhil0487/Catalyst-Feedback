@@ -1,0 +1,12 @@
+{
+  "functions": {
+    "targets": [
+      "catalyst_feedback_function"
+    ],
+    "ignore": [],
+    "source": "functions"
+  },
+  "client": {
+    "source": "client"
+  }
+}

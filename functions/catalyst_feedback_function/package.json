@@ -1,0 +1,9 @@
+{
+	"name": "catalyst_feedback_function",
+	"version": "1.0.0",
+	"main": "index.js",
+	"author": "srinikhil.dss@zohocorp.com",
+	"dependencies": {
+		"zcatalyst-sdk-node": "latest"
+	}
+}
