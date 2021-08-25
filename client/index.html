@@ -10,12 +10,16 @@
     <link rel="icon" type="image/ico" href="favicon.ico" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.0/jquery.validate.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     <script src="main.js"></script>
+
 </head>
 
 <body>
-    <h2 style="text-align:center">Share Feedback</h2>
-    <input class="summary" type="summary" value="SUMMARY ">
+    <button class='btn btn-success pull-right' onclick=" window.open('console/index.html','_blank')">Roadmap</button>
+    <h2 style="text-align:center">Share feedback</h2>
     <form id="basic-form" onSubmit="return false;" method="POST">
         <p>
             <label for="name">Name</label>
@@ -34,7 +38,6 @@
                 <option value="Intelligense">Intelligense</option>
                 <option value="Other servicese">Other services</option>
             </select>
-            <!--<input id="feature" name="feature" placeholder="Feature name">-->
         </p>
         <p>
             <label for="idea">Idea</label>
@@ -45,7 +48,7 @@
             <textarea id="description" cols="50" rows="10" name=" description " placeholder="Please describe your detail in as much detail as possible  "></textarea>
         </p>
         <p>
-            <input class="submit" type="submit" value="SUBMIT ">
+            <input class="submit" type="submit" value="Send feedback ">
         </p>
     </form>
 </body>
