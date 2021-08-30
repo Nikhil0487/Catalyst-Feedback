@@ -5,6 +5,7 @@
 	"author": "srinikhil.dss@zohocorp.com",
 	"dependencies": {
 		"express": "^4.17.1",
-		"zcatalyst-sdk-node": "latest"
+		"zcatalyst-sdk-node": "latest",
+		"zia": "0.0.1"
 	}
 }

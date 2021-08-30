@@ -3,6 +3,7 @@ var app = express();
 app.use(express.json()); // This supports the JSON encoded bodies
 var catalyst = require('zcatalyst-sdk-node');
 
+///APIs
 app.get('/support/ideas/:feature', function(req, res) {
     var catalystApp = catalyst.initialize(req);
     var data = [];
@@ -22,22 +23,17 @@ app.get('/support/ideas/:feature', function(req, res) {
 app.post('/support/feedback', function(req, res) {
     console.log(req.body);
     var catalystApp = catalyst.initialize(req);
-    var datastore = catalystApp.datastore();
-    var table = datastore.table('Feedback');
     var rowData = {}
     rowData["Idea"] = req.body.Idea;
     rowData["Name"] = req.body.Name;
     rowData["Email"] = req.body.Email;
     rowData["Feature"] = req.body.Feature;
     rowData["Description"] = req.body.Description;
+    var text = req.body.Idea.concat(". ")
+    text = text.concat(req.body.Description)
+    analyseIdea(text, catalystApp)
     storeSummaryForFeature(catalystApp, rowData, req)
-    var insertPromise = table.insertRow(rowData);
-    insertPromise.then((row) => {
-        res.send(req.body.Idea);
-    }).catch(err => {
-        console.log(err);
-        sendErrorResponse(res);
-    });
+    res.send(req.body.Idea);
 });
 
 app.get('/support/feedback', function(req, res) {
@@ -66,6 +62,7 @@ app.get('/support/feedback', function(req, res) {
     })
 });
 
+///DB operations
 function getIdeasForFeature(catalystApp, feature) {
     return new Promise((resolve, reject) => {
         catalystApp.zcql().executeZCQLQuery("SELECT Idea FROM Feedback WHERE Feature=\'" + feature + "\'").then(queryResponse => {
@@ -107,6 +104,31 @@ function getSummaryForFeature(catalystApp) {
         })
     });
 }
+///Zia analytics
+function analyseIdea(ideaText, app, rowData) {
+    let zia = app.zia()
+    var datastore = app.datastore();
+    var table = datastore.table('Feedback');
+    var resultJSON
+    console.log("Text analysis: " + ideaText)
+    zia.getTextAnalytics([ideaText]).then(result => {
+        console.log(JSON.stringify(result));
+        if (result.keyword_extractor.keyphrases.length > 0) {
+            var insertPromise = table.insertRow(rowData);
+            insertPromise.then((row) => {
+                console.log("Feedback addedd successfully")
+            }).catch(err => {
+                console.log(err);
+                sendErrorResponse(res);
+            });
+        } else {
+            console.error("No valid keywords")
+        }
+    }).catch(err => {
+        console.error("err")
+    });
+}
+
 /**
  * Sends an error response
  * @param {*} res 
